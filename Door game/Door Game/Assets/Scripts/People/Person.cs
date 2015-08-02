@@ -15,7 +15,15 @@ public class Person : MonoBehaviour
 
     public Text crimianlText;
 
-    int rangeNum;
+    int badRangeNum;
+
+
+    int skillsRangeNum;
+
+    public Text skillsText;
+
+    bool isSkilled;
+
 
     Door DoorOBJ;
 
@@ -31,16 +39,10 @@ public class Person : MonoBehaviour
 
         crimianlText = GameObject.Find("Crime Text").GetComponent<Text>();
 
-        rangeNum = Random.Range(1, 11);
+        skillsText = GameObject.Find("Skills Text").GetComponent<Text>();
 
-        if (rangeNum <= 5)
-        {
-            isBad = false;
-        }
-        else
-        {
-            isBad = true;
-        }
+        PersonalAttributes();
+     
 
        // print(rangeNum.ToString());
 
@@ -49,7 +51,6 @@ public class Person : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
 
        // DZ = GameObject.FindGameObjectWithTag("Detection").GetComponent<DetectionZone>();
 
@@ -68,15 +69,28 @@ public class Person : MonoBehaviour
         {
             if (isBad == true)
             {
-                crimianlText.text = "This person is a criminal";
+                crimianlText.text = "This person was a criminal";
 
                 crimianlText.color = Color.red;
             }
             else
             {
-                crimianlText.text = "This person is a charity worker";
+                crimianlText.text = "This person as no criminal history";
 
                 crimianlText.color = Color.green;
+            }
+
+            if (isSkilled == true)
+            {
+                skillsText.text = "This person is a mechanic";
+
+                skillsText.color = Color.green;
+            }
+            else
+            {
+                skillsText.text = "This person is unemployed";
+
+                skillsText.color = Color.red;
             }
         }
 
@@ -108,5 +122,33 @@ public class Person : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    void PersonalAttributes()
+    {
+        badRangeNum = Random.Range(1, 11);
+
+        if (badRangeNum <= 5)
+        {
+            isBad = false;
+        }
+        else
+        {
+            isBad = true;
+        }
+
+
+        skillsRangeNum = Random.Range(1, 6);
+
+        if (skillsRangeNum <= 3)
+        {
+            isSkilled = true;
+        }
+        else
+        {
+            isSkilled = false;
+        }
+
+
     }
 }
