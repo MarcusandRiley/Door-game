@@ -41,6 +41,7 @@ public class Person : MonoBehaviour
 
         skillsText = GameObject.Find("Skills Text").GetComponent<Text>();
 
+
         PersonalAttributes();
      
 
