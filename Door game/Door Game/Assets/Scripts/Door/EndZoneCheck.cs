@@ -1,31 +1,27 @@
 ﻿using UnityEngine;
-//using UnityEngine.UI;
 using System.Collections;
 
-public class DetectionZone : MonoBehaviour
+public class EndZoneCheck : MonoBehaviour
 {
 
-    //public Text questionText;
-
-    public bool canMakeChoice;
+    public bool hasChecked;
 
     public GameObject personOBJ;
 
-   
+    Person PersonCS;
 
     // Use this for initialization
     void Start()
     {
-        // questionText.gameObject.SetActive(false);
-
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        PersonCS = personOBJ.GetComponent<Person>();
 
-       
-
+        PersonalCheck();
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -38,11 +34,19 @@ public class DetectionZone : MonoBehaviour
 
             //questionText.gameObject.SetActive(true);
 
-            canMakeChoice = true;
+            hasChecked = true;
         }
         else
         {
-            canMakeChoice = false;
+            hasChecked = false;
+        }
+
+    }
+    void PersonalCheck()
+    {
+        if (PersonCS.isBad == true)
+        {
+            print("Lose Point");
         }
 
     }

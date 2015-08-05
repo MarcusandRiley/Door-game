@@ -11,7 +11,8 @@ public class Person : MonoBehaviour
     public bool denied;
 
 
-    // Name
+    // Name 
+    [Header("Name")]
 
     public string[] firstNames;
 
@@ -21,13 +22,9 @@ public class Person : MonoBehaviour
 
     public Text nameTextForm;
 
+    [Header("Crime")]
+    //Crime
 
-
-    //Date of birth
-
-
-
-    // Criminal
     int badRangeNum;
 
     public bool isBad;
@@ -35,16 +32,15 @@ public class Person : MonoBehaviour
     public Text crimianlText;
 
     // Skills
+    [Header("Skills")]
     int skillsRangeNum;
 
     public Text skillsText;
 
     bool isSkilled;
 
-
-
     //Country
-
+    [Header("Country")]
     int countryRangeNum;
 
     public string badCountry;
@@ -55,17 +51,17 @@ public class Person : MonoBehaviour
 
     public Text countryText;
 
-    //Religion
 
-    int religionRangeNum;
+    //[Header("Religion")]
+    //int religionRangeNum;
 
-    public Text religionText;
+    //public Text religionText;
 
-    bool isMuslim;
+    //bool isMuslim;
 
 
 
-    public Canvas passportCanvas;
+    // public Canvas passportCanvas;
 
     public Canvas formCanvas;
 
@@ -115,6 +111,8 @@ public class Person : MonoBehaviour
 
             formCanvas.gameObject.SetActive(true);
 
+            //IF Its Day 1
+
             if (isBad == true)
             {
                 crimianlText.text = "This person was a criminal";
@@ -128,6 +126,7 @@ public class Person : MonoBehaviour
                 crimianlText.color = Color.green;
             }
 
+            //IF Its Day 2
             if (isSkilled == true)
             {
                 skillsText.text = "This person is a mechanic";
@@ -138,15 +137,28 @@ public class Person : MonoBehaviour
             {
                 skillsText.text = "This person is unemployed";
 
-                skillsText.color = Color.red;
+                countryText.color = Color.green;
+
+                //if its day 2
+                //skillsText.color = Color.red;
             }
 
+            //IF Its Day 3
             if (isFromGoodCountry == true)
             {
+                countryText.text = "This person is from: " + goodCountry;
 
+                countryText.color = Color.green;
             }
             else
             {
+                countryText.text = "This person is from: " + badCountry;
+
+                countryText.color = Color.green;
+
+                // if its day 3
+                //countryText.color = Color.red;
+           
 
             }
         }
@@ -213,17 +225,17 @@ public class Person : MonoBehaviour
         {
             isFromGoodCountry = true;
 
-            countryText.text = "This person is from: " + goodCountry;
+            //countryText.text = "This person is from: " + goodCountry;
 
-            countryText.color = Color.green;
+            //countryText.color = Color.green;
         }
         else
         {
             isFromGoodCountry = false;
 
-            countryText.text = "This person is from: " + badCountry;
+            //countryText.text = "This person is from: " + badCountry;
 
-            countryText.color = Color.red;
+            //countryText.color = Color.red;
         }
 
 
@@ -245,8 +257,8 @@ public class Person : MonoBehaviour
         formCanvas = GameObject.Find("Asuylm form Canvas").GetComponent<Canvas>();
 
 
-       
-        
+
+
 
 
         // passportCanvas.gameObject.SetActive(false);

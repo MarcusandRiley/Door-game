@@ -19,6 +19,10 @@ public class Door : MonoBehaviour {
 
     public Text deniedText;
 
+    public Button acceptButton;
+
+    public Button denyButton;
+
 
 	// Use this for initialization
 	void Start () 
@@ -80,4 +84,28 @@ public class Door : MonoBehaviour {
         deniedText.text = "People denied: " + numDenied;
       
 	}
+
+    public void AcceptClick()
+    {
+        madeChoice = true;
+
+        DZ.canMakeChoice = false;
+
+        DZ.personOBJ.GetComponent<Person>().canMove = true;
+
+        DZ.gameObject.SetActive(false);
+
+        numEntered += 1;
+    }
+
+    public void DeniedClick()
+    {
+        DZ.personOBJ.GetComponent<Person>().denied = true;
+
+        DZ.canMakeChoice = false;
+
+        madeChoice = true;
+
+        numDenied += 1;
+    }
 }

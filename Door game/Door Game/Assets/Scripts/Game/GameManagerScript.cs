@@ -7,18 +7,23 @@ public class GameManagerScript : MonoBehaviour {
 
     Door doorCS;
 
+    Person personOBJ;
+
 	// Use this for initialization
 	void Start () 
     {
         gTimer = this.gameObject.GetComponent<GameTimer>();
 
         doorCS = GameObject.FindGameObjectWithTag("Door").GetComponent<Door>();
+
+        //personOBJ = GameObject.FindGameObjectWithTag("Detection").GetComponent<DetectionZone>().personOBJ.GetComponent<Person>();
 	
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
+
 
         if (doorCS.numEntered >= 3)
         {
@@ -40,4 +45,14 @@ public class GameManagerScript : MonoBehaviour {
 
 	
 	}
+
+    void PersonCheck()
+    {
+        // If day one
+
+
+
+
+        //
+    }
 }
