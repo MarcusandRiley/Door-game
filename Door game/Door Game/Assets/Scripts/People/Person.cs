@@ -11,13 +11,30 @@ public class Person : MonoBehaviour
     public bool denied;
 
 
+    // Name
+
+    public string[] firstNames;
+
+    public string[] lastNames;
+
+    public Text nameTextPass;
+
+    public Text nameTextForm;
+
+
+
+    //Date of birth
+
+
+
+    // Criminal
+    int badRangeNum;
+
     public bool isBad;
 
     public Text crimianlText;
 
-    int badRangeNum;
-
-
+    // Skills
     int skillsRangeNum;
 
     public Text skillsText;
@@ -25,9 +42,38 @@ public class Person : MonoBehaviour
     bool isSkilled;
 
 
+
+    //Country
+
+    int countryRangeNum;
+
+    public string badCountry;
+
+    public string goodCountry;
+
+    bool isFromGoodCountry;
+
+    public Text countryText;
+
+    //Religion
+
+    int religionRangeNum;
+
+    public Text religionText;
+
+    bool isMuslim;
+
+
+
+    public Canvas passportCanvas;
+
+    public Canvas formCanvas;
+
+
     Door DoorOBJ;
 
     DetectionZone DZ;
+
 
     // Use this for initialization
     void Start()
@@ -37,15 +83,12 @@ public class Person : MonoBehaviour
         DZ = DoorOBJ.GetComponentInChildren<DetectionZone>();
 
 
-        crimianlText = GameObject.Find("Crime Text").GetComponent<Text>();
-
-        skillsText = GameObject.Find("Skills Text").GetComponent<Text>();
-
+        Forms();
 
         PersonalAttributes();
-     
 
-       // print(rangeNum.ToString());
+
+        // print(rangeNum.ToString());
 
     }
 
@@ -53,7 +96,7 @@ public class Person : MonoBehaviour
     void FixedUpdate()
     {
 
-       // DZ = GameObject.FindGameObjectWithTag("Detection").GetComponent<DetectionZone>();
+        // DZ = GameObject.FindGameObjectWithTag("Detection").GetComponent<DetectionZone>();
 
         if (canMove == true)
         {
@@ -68,6 +111,10 @@ public class Person : MonoBehaviour
 
         if (DZ.canMakeChoice == true)
         {
+            // passportCanvas.gameObject.SetActive(true);
+
+            formCanvas.gameObject.SetActive(true);
+
             if (isBad == true)
             {
                 crimianlText.text = "This person was a criminal";
@@ -92,6 +139,15 @@ public class Person : MonoBehaviour
                 skillsText.text = "This person is unemployed";
 
                 skillsText.color = Color.red;
+            }
+
+            if (isFromGoodCountry == true)
+            {
+
+            }
+            else
+            {
+
             }
         }
 
@@ -150,6 +206,52 @@ public class Person : MonoBehaviour
             isSkilled = false;
         }
 
+
+        countryRangeNum = Random.Range(1, 11);
+
+        if (countryRangeNum <= 8)
+        {
+            isFromGoodCountry = true;
+
+            countryText.text = "This person is from: " + goodCountry;
+
+            countryText.color = Color.green;
+        }
+        else
+        {
+            isFromGoodCountry = false;
+
+            countryText.text = "This person is from: " + badCountry;
+
+            countryText.color = Color.red;
+        }
+
+
+    }
+
+    void Forms()
+    {
+
+
+        crimianlText = GameObject.Find("Crime Text").GetComponent<Text>();
+
+        skillsText = GameObject.Find("Skills Text").GetComponent<Text>();
+
+        countryText = GameObject.Find("Country Text").GetComponent<Text>();
+
+
+        // passportCanvas = GameObject.Find("Passport Canvas").GetComponent<Canvas>();
+
+        formCanvas = GameObject.Find("Asuylm form Canvas").GetComponent<Canvas>();
+
+
+       
+        
+
+
+        // passportCanvas.gameObject.SetActive(false);
+
+        formCanvas.gameObject.SetActive(false);
 
     }
 }
