@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class EndZoneCheck : MonoBehaviour
@@ -10,10 +11,15 @@ public class EndZoneCheck : MonoBehaviour
 
     Person PersonCS;
 
+
+    public int errorsNum;
+
+    public Text errorText;
+
     // Use this for initialization
     void Start()
     {
-       
+       // PersonalCheck();
     }
 
     // Update is called once per frame
@@ -47,6 +53,12 @@ public class EndZoneCheck : MonoBehaviour
         if (PersonCS.isBad == true)
         {
             print("Lose Point");
+
+            errorsNum++;
+
+            errorText.text = "Erros: " + errorsNum;
+
+            
         }
 
     }
