@@ -14,40 +14,65 @@ public class Person : MonoBehaviour
     // Name 
     [Header("Name")]
 
-    public string[] firstNames;
+    public Text nametext;
 
-    public string[] lastNames;
+    int personNumber;
 
-    public Text nameTextPass;
+    //public string[] firstNames;
 
-    public Text nameTextForm;
+    //public string[] lastNames;
 
-    [Header("Crime")]
+    //public Text nameTextPass;
+
+    //public Text nameTextForm;
+
+
+
+    //Date
+
+
+    int day;
+
+    int month;
+
+    [Header("Date")]
+    public int year;
+
+    public Text dateText;
+
+    bool isTooOld;
+
     //Crime
 
-    int badRangeNum;
 
+    [Header("Crime")]
     public bool isBad;
+
+    int badRangeNum;
 
     public Text crimianlText;
 
     // Skills
+
     [Header("Skills")]
-    int skillsRangeNum;
 
     public Text skillsText;
+
+    int skillsRangeNum;
 
     bool isSkilled;
 
     //Country
-    [Header("Country")]
-    int countryRangeNum;
 
+
+    [Header("Country")]
     public string badCountry;
 
     public string goodCountry;
 
     bool isFromGoodCountry;
+
+    int countryRangeNum;
 
     public Text countryText;
 
@@ -111,6 +136,23 @@ public class Person : MonoBehaviour
 
             formCanvas.gameObject.SetActive(true);
 
+            nametext.text = "# " + personNumber.ToString();
+
+
+            dateText.text = "" + day + "/" + "" + month + "/" + year;
+
+            if (isTooOld == true)
+            {
+                //dateText.color = Color.red;
+
+                dateText.color = Color.green;
+            }
+            else
+            {
+                dateText.color = Color.green;
+            }
+
+
             //IF Its Day 1
 
             if (isBad == true)
@@ -158,7 +200,7 @@ public class Person : MonoBehaviour
 
                 // if its day 3
                 //countryText.color = Color.red;
-           
+
 
             }
         }
@@ -195,6 +237,23 @@ public class Person : MonoBehaviour
 
     void PersonalAttributes()
     {
+        personNumber = Random.Range(1232, 18694745);
+
+        day = Random.Range(1, 32);
+
+        month = Random.Range(1, 13);
+
+        year = Random.Range(1940, 2002);
+
+        if (year <= 1975)
+        {
+            isTooOld = true;
+        }
+        else
+        {
+            isTooOld = false;
+        }
+
         badRangeNum = Random.Range(1, 11);
 
         if (badRangeNum <= 5)
@@ -243,7 +302,9 @@ public class Person : MonoBehaviour
 
     void Forms()
     {
+        nametext = GameObject.Find("Name Text").GetComponent<Text>();
 
+        dateText = GameObject.Find("Date of Birth Text").GetComponent<Text>();
 
         crimianlText = GameObject.Find("Crime Text").GetComponent<Text>();
 
@@ -255,10 +316,6 @@ public class Person : MonoBehaviour
         // passportCanvas = GameObject.Find("Passport Canvas").GetComponent<Canvas>();
 
         formCanvas = GameObject.Find("Asuylm form Canvas").GetComponent<Canvas>();
-
-
-
-
 
 
         // passportCanvas.gameObject.SetActive(false);

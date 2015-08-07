@@ -11,6 +11,7 @@ public class EndZoneCheck : MonoBehaviour
 
     Person PersonCS;
 
+    bool madeError;
 
     public int errorsNum;
 
@@ -54,12 +55,20 @@ public class EndZoneCheck : MonoBehaviour
         {
             print("Lose Point");
 
+            madeError = true;
+        }
+
+        if (madeError == true)
+        {
             errorsNum++;
 
-            errorText.text = "Erros: " + errorsNum;
+            madeError = false;
 
-            
         }
+
+
+
+        errorText.text = "Errors: " + errorsNum;
 
     }
 }

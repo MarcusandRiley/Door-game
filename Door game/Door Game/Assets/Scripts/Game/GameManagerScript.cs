@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameManagerScript : MonoBehaviour {
 
+    public int dayNum = 1;
+
     GameTimer gTimer;
 
     Door doorCS;
@@ -24,17 +26,64 @@ public class GameManagerScript : MonoBehaviour {
 	void Update () 
     {
 
-
-        if (doorCS.numEntered >= 3)
+        if (dayNum == 1)
         {
-            //print("Entered");
+            if (doorCS.numEntered >= 10)
+            {
+                //print("Entered");
+
+                dayNum++;
+            }
+            else if (doorCS.numDenied >= 3)
+            {
+                // print("Denied");
+            }
         }
 
-        if (doorCS.numDenied >= 3)
+
+        if (dayNum == 2)
         {
-           // print("Denied");
+            if (doorCS.numEntered >= 3)
+            {
+                //print("Entered");
+
+                dayNum++;
+            }
+            else if (doorCS.numDenied >= 3)
+            {
+                // print("Denied");
+            }
         }
 
+
+        if (dayNum == 3)
+        {
+            if (doorCS.numEntered >= 3)
+            {
+                //print("Entered");
+
+                dayNum++;
+            }
+            else if (doorCS.numDenied >= 3)
+            {
+                // print("Denied");
+            }
+        }
+
+
+        if (dayNum == 4)
+        {
+            if (doorCS.numEntered >= 3)
+            {
+                //print("Entered");
+
+                dayNum++;
+            }
+            else if (doorCS.numDenied >= 3)
+            {
+                // print("Denied");
+            }
+        }
 
 
         if (gTimer.gameTime <= 0)
