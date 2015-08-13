@@ -34,22 +34,24 @@ public class GameManagerScript : MonoBehaviour {
 
                 dayNum++;
             }
-            else if (doorCS.numDenied >= 3)
+            else if (doorCS.numDenied >= 10)
             {
                 // print("Denied");
+
+                
             }
         }
 
 
         if (dayNum == 2)
         {
-            if (doorCS.numEntered >= 3)
+            if (doorCS.numEntered >= 15)
             {
                 //print("Entered");
 
                 dayNum++;
             }
-            else if (doorCS.numDenied >= 3)
+            else if (doorCS.numDenied >= 10)
             {
                 // print("Denied");
             }
@@ -58,13 +60,13 @@ public class GameManagerScript : MonoBehaviour {
 
         if (dayNum == 3)
         {
-            if (doorCS.numEntered >= 3)
+            if (doorCS.numEntered >= 20)
             {
                 //print("Entered");
 
                 dayNum++;
             }
-            else if (doorCS.numDenied >= 3)
+            else if (doorCS.numDenied >= 10)
             {
                 // print("Denied");
             }
@@ -73,22 +75,25 @@ public class GameManagerScript : MonoBehaviour {
 
         if (dayNum == 4)
         {
-            if (doorCS.numEntered >= 3)
+            if (doorCS.numEntered >= 25)
             {
                 //print("Entered");
 
                 dayNum++;
             }
-            else if (doorCS.numDenied >= 3)
+            else if (doorCS.numDenied >= 10)
             {
                 // print("Denied");
             }
         }
 
 
-        if (gTimer.gameTime <= 0)
+        if (gTimer.timerRun == false)
         {
             print("Day finished");
+
+            //check errors
+            //then go to next scene
         }
 
 

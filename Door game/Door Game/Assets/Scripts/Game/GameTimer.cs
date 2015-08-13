@@ -2,25 +2,41 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class GameTimer : MonoBehaviour {
+public class GameTimer : MonoBehaviour
+{
 
-    public float gameTime;
+    public float gameTimer;
 
     public Text timerText;
 
-    //float timer;
+    public bool timerRun = true;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () 
+
+    // Use this for initialization
+    void Start()
     {
-        gameTime -= Time.deltaTime;
 
-        timerText.text = gameTime.ToString();
-	
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        string seconds = Mathf.Floor(gameTimer % 60).ToString("00");
+
+        if (timerRun == true)
+        {
+            gameTimer -= Time.deltaTime;
+
+            timerText.text = seconds;
+
+            if (gameTimer <= 0)
+            {
+                timerRun = false;
+
+                gameTimer = 0;
+
+            }
+        }
+
+    }
 }

@@ -20,15 +20,15 @@ public class EndZoneCheck : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-       // PersonalCheck();
+        //PersonalCheck();
     }
 
     // Update is called once per frame
     void Update()
     {
-        PersonCS = personOBJ.GetComponent<Person>();
+       PersonCS = personOBJ.GetComponent<Person>();
 
-        PersonalCheck();
+      // PersonalCheck();
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -49,6 +49,12 @@ public class EndZoneCheck : MonoBehaviour
         }
 
     }
+
+    void OnTriggerExit2D(Collider2D col)
+    {
+        PersonalCheck();
+    }
+
     void PersonalCheck()
     {
         if (PersonCS.isBad == true)
@@ -57,16 +63,18 @@ public class EndZoneCheck : MonoBehaviour
 
             madeError = true;
         }
+        else
+        {
+            madeError = false;
+        }
 
         if (madeError == true)
         {
             errorsNum++;
 
-            madeError = false;
+            //madeError = false;
 
         }
-
-
 
         errorText.text = "Errors: " + errorsNum;
 

@@ -27,9 +27,7 @@ public class Person : MonoBehaviour
     //public Text nameTextForm;
 
 
-
     //Date
-
 
     int day;
 
@@ -66,24 +64,15 @@ public class Person : MonoBehaviour
 
 
     [Header("Country")]
-    public string badCountry;
+    public string[] badCountry;
 
-    public string goodCountry;
+    public string[] goodCountry;
 
     bool isFromGoodCountry;
 
     int countryRangeNum;
 
     public Text countryText;
-
-
-    //[Header("Religion")]
-    //int religionRangeNum;
-
-    //public Text religionText;
-
-    //bool isMuslim;
-
 
 
     // public Canvas passportCanvas;
@@ -107,6 +96,7 @@ public class Person : MonoBehaviour
         Forms();
 
         PersonalAttributes();
+
 
 
         // print(rangeNum.ToString());
@@ -139,8 +129,10 @@ public class Person : MonoBehaviour
             nametext.text = "# " + personNumber.ToString();
 
 
+
             dateText.text = "" + day + "/" + "" + month + "/" + year;
 
+            //Day 4
             if (isTooOld == true)
             {
                 //dateText.color = Color.red;
@@ -179,30 +171,38 @@ public class Person : MonoBehaviour
             {
                 skillsText.text = "This person is unemployed";
 
-                countryText.color = Color.green;
+               skillsText.color = Color.green;
 
                 //if its day 2
                 //skillsText.color = Color.red;
             }
 
             //IF Its Day 3
-            if (isFromGoodCountry == true)
-            {
-                countryText.text = "This person is from: " + goodCountry;
-
-                countryText.color = Color.green;
-            }
-            else
-            {
-                countryText.text = "This person is from: " + badCountry;
-
-                countryText.color = Color.green;
-
-                // if its day 3
-                //countryText.color = Color.red;
 
 
-            }
+            //if (isFromGoodCountry == true)
+            //{
+
+            //    string counString = goodCountry[Random.Range(0, goodCountry.Length)];
+
+            //    countryText.text = "This person is from: " + counString;
+
+            //    countryText.color = Color.green;
+
+            //}
+            //else
+            //{
+            //    string counString = badCountry[Random.Range(0, badCountry.Length)];
+
+            //    countryText.text = "This person is from: " + counString;
+
+            //    countryText.color = Color.green;
+
+            //    // if its day 3
+            //    //countryText.color = Color.red;
+
+
+            //}
         }
 
 
@@ -284,17 +284,21 @@ public class Person : MonoBehaviour
         {
             isFromGoodCountry = true;
 
-            //countryText.text = "This person is from: " + goodCountry;
+            string counString = goodCountry[Random.Range(0, goodCountry.Length)];
 
-            //countryText.color = Color.green;
+            countryText.text = "This person is from: " + counString;
+
+            countryText.color = Color.green;
         }
         else
         {
             isFromGoodCountry = false;
 
-            //countryText.text = "This person is from: " + badCountry;
+            string counString = badCountry[Random.Range(0, badCountry.Length)];
 
-            //countryText.color = Color.red;
+            countryText.text = "This person is from: " + counString;
+
+            countryText.color = Color.green;
         }
 
 
