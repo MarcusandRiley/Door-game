@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameManagerScript : MonoBehaviour {
 
     public int dayNum = 1;
+
+    public Text dayText;
 
     GameTimer gTimer;
 
@@ -96,7 +99,7 @@ public class GameManagerScript : MonoBehaviour {
             //then go to next scene
         }
 
-
+        dayText.text = dayNum.ToString();
 	
 	}
 

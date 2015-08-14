@@ -38,7 +38,7 @@ public class Person : MonoBehaviour
 
     public Text dateText;
 
-    bool isTooOld;
+    public bool isTooOld;
 
     //Crime
 
@@ -58,7 +58,7 @@ public class Person : MonoBehaviour
 
     int skillsRangeNum;
 
-    bool isSkilled;
+    public bool isSkilled;
 
     //Country
 
@@ -68,7 +68,7 @@ public class Person : MonoBehaviour
 
     public string[] goodCountry;
 
-    bool isFromGoodCountry;
+    public bool isFromGoodCountry;
 
     int countryRangeNum;
 
@@ -84,6 +84,10 @@ public class Person : MonoBehaviour
 
     DetectionZone DZ;
 
+    GameManagerScript gameManage;
+
+    string counString;
+
 
     // Use this for initialization
     void Start()
@@ -91,6 +95,8 @@ public class Person : MonoBehaviour
         DoorOBJ = GameObject.Find("Door").GetComponent<Door>();
 
         DZ = DoorOBJ.GetComponentInChildren<DetectionZone>();
+
+        gameManage = GameObject.Find("Game Manager").GetComponent<GameManagerScript>();
 
 
         Forms();
@@ -141,7 +147,15 @@ public class Person : MonoBehaviour
             }
             else
             {
-                dateText.color = Color.green;
+                if (gameManage.dayNum >= 4)
+                {
+                    dateText.color = Color.red;
+                }
+                else
+                {
+                    dateText.color = Color.green;
+                }
+
             }
 
 
@@ -171,38 +185,24 @@ public class Person : MonoBehaviour
             {
                 skillsText.text = "This person is unemployed";
 
-               skillsText.color = Color.green;
+                if (gameManage.dayNum >= 2)
+                {
+                    skillsText.color = Color.red;
+                }
+                else
+                {
+                    dateText.color = Color.green;
+                }
+
+
+
+
 
                 //if its day 2
                 //skillsText.color = Color.red;
             }
 
-            //IF Its Day 3
 
-
-            //if (isFromGoodCountry == true)
-            //{
-
-            //    string counString = goodCountry[Random.Range(0, goodCountry.Length)];
-
-            //    countryText.text = "This person is from: " + counString;
-
-            //    countryText.color = Color.green;
-
-            //}
-            //else
-            //{
-            //    string counString = badCountry[Random.Range(0, badCountry.Length)];
-
-            //    countryText.text = "This person is from: " + counString;
-
-            //    countryText.color = Color.green;
-
-            //    // if its day 3
-            //    //countryText.color = Color.red;
-
-
-            //}
         }
 
 
@@ -284,21 +284,44 @@ public class Person : MonoBehaviour
         {
             isFromGoodCountry = true;
 
-            string counString = goodCountry[Random.Range(0, goodCountry.Length)];
+            counString = goodCountry[Random.Range(0, goodCountry.Length)];
 
+            //countryText.text = "This person is from: " + counString;
+
+            //countryText.color = Color.green;
+        }
+        else
+        {
+            isFromGoodCountry = false;
+
+            counString = badCountry[Random.Range(0, badCountry.Length)];
+
+            //countryText.text = "This person is from: " + counString;
+
+            //countryText.color = Color.green;
+
+        }
+
+        if (isFromGoodCountry == true)
+        {
             countryText.text = "This person is from: " + counString;
 
             countryText.color = Color.green;
         }
         else
         {
-            isFromGoodCountry = false;
+            if (gameManage.dayNum >= 3)
+            {
+                countryText.text = "This person is from: " + counString;
 
-            string counString = badCountry[Random.Range(0, badCountry.Length)];
+                countryText.color = Color.red;
+            }
+            else
+            {
+                countryText.text = "This person is from: " + counString;
 
-            countryText.text = "This person is from: " + counString;
-
-            countryText.color = Color.green;
+                countryText.color = Color.green;
+            }
         }
 
 

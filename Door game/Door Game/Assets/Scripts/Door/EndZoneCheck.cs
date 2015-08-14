@@ -17,10 +17,14 @@ public class EndZoneCheck : MonoBehaviour
 
     public Text errorText;
 
+    GameManagerScript gameManage;
+
     // Use this for initialization
     void Start()
     {
         //PersonalCheck();
+
+        gameManage = GameObject.Find("Game Manager").GetComponent<GameManagerScript>();
     }
 
     // Update is called once per frame
@@ -59,7 +63,7 @@ public class EndZoneCheck : MonoBehaviour
     {
         if (PersonCS.isBad == true)
         {
-            print("Lose Point");
+           // print("Lose Point");
 
             madeError = true;
         }
@@ -67,6 +71,44 @@ public class EndZoneCheck : MonoBehaviour
         {
             madeError = false;
         }
+
+        if (gameManage.dayNum >= 2)
+        {
+            if (PersonCS.isSkilled == false)
+            {
+                madeError = true;
+            }
+            else
+            {
+                madeError = false;
+            }
+        }
+
+        if (gameManage.dayNum >= 3)
+        {
+            if (PersonCS.isFromGoodCountry == false)
+            {
+                madeError = true;
+            }
+            else
+            {
+                madeError = false;
+            }
+        }
+
+
+        if (gameManage.dayNum >= 4)
+        {
+            if (PersonCS.isTooOld == true)
+            {
+                madeError = true;
+            }
+            else
+            {
+                madeError = false;
+            }
+        }
+
 
         if (madeError == true)
         {
