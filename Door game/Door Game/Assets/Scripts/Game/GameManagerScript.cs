@@ -36,11 +36,22 @@ public class GameManagerScript : MonoBehaviour {
                 //print("Entered");
 
                 dayNum++;
+
+                doorCS.numEntered = 0;
+
+                doorCS.numDenied = 0;
+
+                gTimer.gameTimer = 60;
             }
             else if (doorCS.numDenied >= 10)
             {
                 // print("Denied");
 
+                doorCS.numEntered = 0;
+
+                doorCS.numDenied = 0;
+
+                gTimer.gameTimer = 60;
                 
             }
         }
@@ -50,13 +61,25 @@ public class GameManagerScript : MonoBehaviour {
         {
             if (doorCS.numEntered >= 15)
             {
-                //print("Entered");
+                //print("Entered")
 
                 dayNum++;
+
+                doorCS.numEntered = 0;
+
+                doorCS.numDenied = 0;
+
+                gTimer.gameTimer = 60;
             }
             else if (doorCS.numDenied >= 10)
             {
                 // print("Denied");
+
+                doorCS.numEntered = 0;
+
+                doorCS.numDenied = 0;
+
+                gTimer.gameTimer = 60;
             }
         }
 
@@ -68,28 +91,50 @@ public class GameManagerScript : MonoBehaviour {
                 //print("Entered");
 
                 dayNum++;
+
+                doorCS.numEntered = 0;
+
+                doorCS.numDenied = 0;
+
+                gTimer.gameTimer = 60;
             }
             else if (doorCS.numDenied >= 10)
             {
                 // print("Denied");
+
+                doorCS.numEntered = 0;
+
+                doorCS.numDenied = 0;
+
+                gTimer.gameTimer = 60;
             }
         }
 
 
         if (dayNum == 4)
         {
-            if (doorCS.numEntered >= 25)
+            if (doorCS.numEntered >= 5)
             {
                 //print("Entered");
 
-                dayNum++;
+                //dayNum++;
+
+                doorCS.numEntered = 0;
+
+                doorCS.numDenied = 0;
+
+                gTimer.gameTimer = 60;
+
             }
-            else if (doorCS.numDenied >= 10)
+            else if (doorCS.numDenied >= 25)
             {
                 // print("Denied");
+
+                Application.LoadLevel(0);
+
+                
             }
         }
-
 
         if (gTimer.timerRun == false)
         {
@@ -99,7 +144,7 @@ public class GameManagerScript : MonoBehaviour {
             //then go to next scene
         }
 
-        dayText.text = dayNum.ToString();
+        dayText.text = "Day " + dayNum.ToString();
 	
 	}
 
